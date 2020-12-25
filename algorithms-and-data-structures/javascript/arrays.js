@@ -19,7 +19,7 @@ console.table(items);
 // removal (from the end): O(1)
 items.pop();
 console.table(items);
-// removal (from the start): O(1)
+// removal (from the start): O(n)
 items.shift();
 console.table(items);
 
