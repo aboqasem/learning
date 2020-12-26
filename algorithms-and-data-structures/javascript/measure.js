@@ -10,8 +10,13 @@ module.exports = (fn, args) => {
     })
     .join(", ");
   const now = Date.now();
-  const output = fn(...args);
+  let output = fn(...args);
   const time = Date.now() - now;
+  if (Array.isArray(output)) {
+    const isLarge = output.length > 3;
+    output = isLarge ? output.slice(0, 3) : output;
+    output = `[${output.join(", ")}${".".repeat(isLarge * 3)}]`;
+  }
   console.table({
     "Function name": fn.name,
     Arguments: argsStr,
