@@ -6,6 +6,6 @@ module.exports = (fn, args) => {
     "Function name": fn.name,
     Arguments: args.join(", "),
     Output: output,
-    "Time taken": time,
+    "Time taken": `${time}ms`,
   });
 };
