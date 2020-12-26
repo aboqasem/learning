@@ -4,7 +4,7 @@
  * https://www.youtube.com/watch?v=80QRqWvCkiU
  */
 
-const measure = require("./measure");
+const profile = require("./profile");
 
 /**
  * Partial sum of natural numbers until n.
@@ -26,5 +26,5 @@ function partialSumMath(n) {
   return ((1 + n) / 2) * n;
 }
 
-measure(partialSumLoop, [100000000]);
-measure(partialSumMath, [100000000]);
+profile(partialSumLoop, [100000000]);
+profile(partialSumMath, [100000000]);

@@ -3,7 +3,7 @@
  * https://medium.com/@seanoughton/problem-solving-patterns-frequency-counter-c7b26b3f31f
  */
 
-const measure = require("./measure");
+const profile = require("./profile");
 
 /**
  * Find if two strings are anagram (https://en.wikipedia.org/wiki/Anagram).
@@ -69,7 +69,7 @@ function hasSquaredFrequencyCounter(arr1, arr2) {
 
 const str1 = "Listen";
 const str2 = "Silent";
-measure(isAnagram, [str1, str2]);
+profile(isAnagram, [str1, str2]);
 
 const arr1 = [];
 const arr2 = [];
@@ -77,5 +77,5 @@ for (let i = 0; i < 10000; ++i) {
   arr1.push(i ** 2);
   arr2.push(i);
 }
-measure(hasSquaredNestedLoops, [arr1, arr2]);
-measure(hasSquaredFrequencyCounter, [arr1, arr2]);
+profile(hasSquaredNestedLoops, [arr1, arr2]);
+profile(hasSquaredFrequencyCounter, [arr1, arr2]);
