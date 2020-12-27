@@ -80,13 +80,11 @@ function sameFrequency(num1, num2) {
   const freq1 = {};
   // O(n)
   while (num1 > 0) {
-    digits1++;
     const digit = num1 % 10;
     freq1[digit] = ++freq1[digit] || 1;
     num1 = Math.floor(num1 / 10);
   }
   while (num2 > 0) {
-    digits2++;
     const digit = num2 % 10;
     if (!freq1[digit]) return false;
     else freq1[digit]--;
