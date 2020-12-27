@@ -6,28 +6,6 @@
 const profile = require("./profile");
 
 /**
- * Find if two strings are anagram (https://en.wikipedia.org/wiki/Anagram).
- * O(n) solution with frequency counter pattern.
- */
-function isAnagram(str1, str2) {
-  if (!(str1.length === str2.length)) return false;
-  if (str1 === "") return true;
-  const freq1 = {};
-  // O(n)
-  for (let i = 0; i < str1.length; ++i) {
-    const char = str1[i].toLowerCase();
-    freq1[char] = ++freq1[char] || 1;
-  }
-  // O(n)
-  for (let i = 0; i < str2.length; ++i) {
-    const char = str2[i].toLowerCase();
-    if (!freq1[char]) return false;
-    else freq1[char]--;
-  }
-  return true;
-}
-
-/**
  * Find if an array has every number of another array squared.
  * O(n^2) solution with nested loops.
  */
@@ -67,15 +45,38 @@ function hasSquaredFrequencyCounter(arr1, arr2) {
   return true;
 }
 
+/**
+ * Find if two strings are anagram (https://en.wikipedia.org/wiki/Anagram).
+ * O(n) solution with frequency counter pattern.
+ */
+function isAnagram(str1, str2) {
+  if (!(str1.length === str2.length)) return false;
+  if (str1 === "") return true;
+  const freq1 = {};
+  // O(n)
+  for (let i = 0; i < str1.length; ++i) {
+    const char = str1[i].toLowerCase();
+    freq1[char] = ++freq1[char] || 1;
+  }
+  // O(n)
+  for (let i = 0; i < str2.length; ++i) {
+    const char = str2[i].toLowerCase();
+    if (!freq1[char]) return false;
+    else freq1[char]--;
+  }
+  return true;
+}
+
+// Uncomment to test
+// const arr1 = [];
+// const arr2 = [];
+// for (let i = 0; i < 10000; ++i) {
+//   arr1.push(i ** 2);
+//   arr2.push(i);
+// }
+// profile(hasSquaredNestedLoops, [arr1, arr2]);
+// profile(hasSquaredFrequencyCounter, [arr1, arr2]);
+
 const str1 = "Listen";
 const str2 = "Silent";
 profile(isAnagram, [str1, str2]);
-
-const arr1 = [];
-const arr2 = [];
-for (let i = 0; i < 10000; ++i) {
-  arr1.push(i ** 2);
-  arr2.push(i);
-}
-profile(hasSquaredNestedLoops, [arr1, arr2]);
-profile(hasSquaredFrequencyCounter, [arr1, arr2]);
