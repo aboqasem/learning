@@ -93,6 +93,23 @@ function sameFrequency(num1, num2) {
   return true;
 }
 
+/**
+ * Find if there are duplicate arguments.
+ * O(n) solution with frequency counter pattern.
+ */
+function areThereDuplicates(...args) {
+  if (args.length <= 1) return false;
+
+  const freq1 = {};
+  // O(n)
+  for (let i = 0; i < args.length; ++i) {
+    if (!freq1[args[i]]) {
+      freq1[args[i]] = 1;
+    } else return true;
+  }
+  return false;
+}
+
 // Uncomment to test
 // const arr1 = [];
 // const arr2 = [];
@@ -108,4 +125,7 @@ function sameFrequency(num1, num2) {
 // const str2 = "Silent";
 // profile(isAnagram, [str1, str2]);
 
-profile(sameFrequency, [121, 211]);
+// Uncomment to test
+// profile(sameFrequency, [121, 211]);
+
+profile(areThereDuplicates, [0, 1, 2, 3, 0]);
