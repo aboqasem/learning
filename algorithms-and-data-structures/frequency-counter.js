@@ -87,7 +87,7 @@ function sameFrequency(num1, num2) {
   while (num2 > 0) {
     const digit = num2 % 10;
     if (!freq1[digit]) return false;
-    else freq1[digit]--;
+    freq1[digit]--;
     num2 = Math.floor(num2 / 10);
   }
   return true;
