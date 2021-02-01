@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.jpg" type="image/jpg" />
+    <link rel="stylesheet" href="style.css" />
+    <title>dWeb</title>
+  </head>
+
+  <script>
+    const chaos = () => {
+      document.getElementById("chaos").remove();
+
+      setInterval(() => {
+        const cat = document.createElement("img");
+        const width = 1 + Math.random() * 15;
+        cat.style = `width: ${width}vw`;
+        cat.src = "dancing.webp";
+        document.getElementById("cats").append(cat);
+      }, 50);
+    };
+  </script>
+
+  <body>
+    <div>
+      <h1>Hello, World!</h1>
+      <hr />
+      <a href="what.html">
+        <h5>What is this?</h5>
+      </a>
+      <button id="chaos" onclick="chaos()">START CHAOS</button>
+      <div id="cats"></div>
+    </div>
+  </body>
+</html>
