@@ -1,0 +1,8 @@
+[package]
+name = "intro"
+version = "0.1.0"
+authors = ["Mohammad Al Zouabi <62098043+aboqasem@users.noreply.github.com>"]
+edition = "2018"
+
+[dependencies]
+chrono = "0.4"
