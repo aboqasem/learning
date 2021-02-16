@@ -1,5 +1,7 @@
-mod logging;
+// mod logging;
+mod variables;
 
 fn main() {
-    logging::run();
+    // logging::run();
+    variables::run();
 }
