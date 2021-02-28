@@ -3,7 +3,8 @@
 // mod types;
 // mod functions;
 // mod control_flow;
-mod ownership;
+// mod ownership;
+mod borrowing;
 
 fn main() {
     // logging::run();
@@ -11,5 +12,6 @@ fn main() {
     // types::run();
     // functions::run();
     // control_flow::run();
-    ownership::run();
+    // ownership::run();
+    borrowing::run();
 }
