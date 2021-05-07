@@ -1,12 +1,20 @@
 package runners;
 
-import org.junit.Test;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
 
-import static org.junit.Assert.assertTrue;
-
+@RunWith(Cucumber.class)
+@CucumberOptions(
+    features = {
+        "src/test/resources/features",
+    },
+    glue = {
+        "stepdefinitions",
+    },
+    strict = true,
+    monochrome = true
+)
 public class TestRunner {
-  @Test
-  public void shouldAnswerWithTrue() {
-    assertTrue(true);
-  }
+
 }
