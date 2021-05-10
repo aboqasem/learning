@@ -2,6 +2,6 @@ Feature: Search Stuff
 
   Scenario: Search for stuff on Google
     Given my browser is Google Chrome
-    And I visit "www.google.com"
+    And I visit "https://www.google.com/"
     When I search "food"
-    Then I should see "food"
+    Then the page title should start with "food"
