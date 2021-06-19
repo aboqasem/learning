@@ -32,4 +32,14 @@ public class StudentController {
         "data", storedStudent
     );
   }
+
+  @DeleteMapping
+  public Map<String, Object> deleteStudent(@RequestParam Long studentId) {
+    final var deletedStudentId = studentService.deleteStudent(studentId);
+
+    return Map.of(
+        "message", "Successfully deleted student with ID: %d.".formatted(deletedStudentId),
+        "data", Map.of("id", deletedStudentId)
+    );
+  }
 }

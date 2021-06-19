@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -26,5 +27,13 @@ public class StudentService {
       throw new EntityExistsException("Student with email: %s already exists.".formatted(student.getEmail()));
     }
     return studentRepository.save(student);
+  }
+
+  public Long deleteStudent(Long studentId) throws EntityNotFoundException {
+    if (!studentRepository.existsById(studentId)) {
+      throw new EntityNotFoundException("Student with id: %d does not exist.".formatted(studentId));
+    }
+    studentRepository.deleteById(studentId);
+    return studentId;
   }
 }
