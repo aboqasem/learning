@@ -11,7 +11,6 @@ import java.time.Period;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @ToString
 public final class Student {
   @Id
@@ -25,15 +24,22 @@ public final class Student {
       generator = "student_sequence"
   )
   private Long id;
-  @NonNull
+
   private String name;
-  @NonNull
+
   private String email;
-  @NonNull
+
   private LocalDate dob;
+
   @Setter(AccessLevel.NONE)
   @Transient
   private Integer age;
+
+  public Student(String name, String email, LocalDate dob) {
+    this.name = name;
+    this.email = email;
+    this.dob = dob;
+  }
 
   public Integer getAge() {
     return Period.between(dob, LocalDate.now()).getYears();

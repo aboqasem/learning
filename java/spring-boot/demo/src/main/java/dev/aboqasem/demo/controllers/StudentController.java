@@ -42,4 +42,13 @@ public class StudentController {
         "data", Map.of("id", deletedStudentId)
     );
   }
+
+  @PutMapping(path = "{studentId}")
+  public Map<String, Object> updateStudent(@PathVariable("studentId") Long studentId, @RequestBody Student newStudentDetails) {
+    final var updatedStudent = studentService.updateStudent(studentId, newStudentDetails);
+    return Map.of(
+        "message", "Successfully updated student with ID: %d.".formatted(studentId),
+        "data", updatedStudent
+    );
+  }
 }
