@@ -14,7 +14,7 @@ public class GreetingServiceImpl extends GreetingGrpc.GreetingImplBase {
     log.info("Called greet with Person: {}", request);
 
     final Greet response = Greet.newBuilder()
-        .setContent(request.getName())
+        .setContent("Greetings, " + request.getName() + "!")
         .build();
 
     responseObserver.onNext(response);
