@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "dev.aboqasem.grpc.generated";
+option java_outer_classname = "GreetingProto";
+
+package greeting;
+
+message Person {
+  string name = 1;
+  uint32 age = 2;
+}
+
+message Greet {
+  string content = 1;
+}
+
+service Greeting {
+  rpc greet(Person) returns (Greet) {}
+}
