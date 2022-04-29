@@ -3,7 +3,7 @@
  * https://medium.com/@seanoughton/problem-solving-patterns-frequency-counter-c7b26b3f31f
  */
 
-const profile = require("./profile");
+const profile = require("../utils/profile");
 
 /**
  * Find if an array has every number of another array squared.

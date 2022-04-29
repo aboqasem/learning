@@ -4,7 +4,7 @@
  * https://www.youtube.com/watch?v=80QRqWvCkiU
  */
 
-const profile = require("./profile");
+const profile = require("../utils/profile");
 
 /**
  * Partial sum of natural numbers until n.

@@ -1,6 +1,6 @@
 # Problem Solving
 
-## Devise a Plan:
+## Devise a Plan
 
 ### 1. Understand The Problem
 

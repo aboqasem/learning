@@ -3,7 +3,7 @@
  * https://medium.com/@seanoughton/problem-solving-patterns-multiple-pointers-2dae827d154d
  */
 
-const profile = require("./profile");
+const profile = require("../utils/profile");
 
 /**
  * Find the first pair where its sum is zero in a sorted array.
