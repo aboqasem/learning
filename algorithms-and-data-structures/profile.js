@@ -1,3 +1,5 @@
+const { performance } = require('perf_hooks');
+
 module.exports = (fn, args) => {
   const argsStr = args
     .map((v) => {
@@ -9,9 +11,9 @@ module.exports = (fn, args) => {
       return v;
     })
     .join(", ");
-  const now = Date.now();
+  const start = performance.now();
   let output = fn(...args);
-  const time = Date.now() - now;
+  const end = performance.now();
   if (Array.isArray(output)) {
     const isLarge = output.length > 3;
     output = isLarge ? output.slice(0, 3) : output;
@@ -21,6 +23,6 @@ module.exports = (fn, args) => {
     "Function name": fn.name,
     Arguments: argsStr,
     Output: output,
-    "Time taken": `${time}ms`,
+    "Time taken": `${end - start}ms`,
   });
 };
