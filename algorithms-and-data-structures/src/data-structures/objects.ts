@@ -15,11 +15,11 @@ console.table(person);
 console.table([person["name"], person.gender]);
 
 // insertion: O(1)
-person["height"] = 192;
+(person as any)["height"] = 192;
 console.table(person);
 
 // removal: O(1)
-delete person["height"];
+delete (person as any)["height"];
 console.table(person);
 
 // Keys and entries: O(n)

@@ -4,13 +4,13 @@
  * https://www.youtube.com/watch?v=80QRqWvCkiU
  */
 
-const profile = require("../utils/profile");
+import { profile } from "../utils/profile";
 
 /**
  * Partial sum of natural numbers until n.
  * O(n) solution with loops.
  */
-function partialSumLoop(n) {
+function partialSumLoop(n: number) {
   let sum = 0;
   for (let i = 1; i <= n; ++i) {
     sum += i;
@@ -22,7 +22,7 @@ function partialSumLoop(n) {
  * Partial sum of natural numbers until n.
  * O(1) solution with math.
  */
-function partialSumMath(n) {
+function partialSumMath(n: number) {
   return ((1 + n) / 2) * n;
 }
 
