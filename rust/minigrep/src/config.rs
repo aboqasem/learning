@@ -7,25 +7,23 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn build(args: &[String]) -> Result<Config, &'static str> {
-        const EXPECTED_NUM_ARGS: usize = 2;
+    pub fn build(mut args_iter: impl Iterator<Item=String>) -> Result<Config, &'static str> {
+        let query = match args_iter.next() {
+            Some(str) if !str.is_empty() => str,
+            _ => return Err("`query` must be provided")
+        };
 
-        if args.len() != EXPECTED_NUM_ARGS {
-            return Err("Invalid number of arguments");
-        }
+        let file_path = match args_iter.next() {
+            Some(str) if !str.is_empty() => str,
+            _ => return Err("`file_path` must be provided")
+        };
 
-        let [query, file_path] = [&args[0], &args[1]];
-
-        if query.is_empty() || file_path.is_empty() {
-            return Err("Invalid arguments");
+        if args_iter.next().is_some() {
+            return Err("Unexpected number of arguments");
         }
 
         let ignore_case: bool = env::var("IGNORE_CASE").is_ok();
 
-        Ok(Config {
-            query: query.clone(),
-            file_path: file_path.clone(),
-            ignore_case
-        })
+        Ok(Config { query, file_path, ignore_case })
     }
 }

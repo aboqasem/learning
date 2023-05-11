@@ -5,13 +5,13 @@ use minigrep::{
 };
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
+    let mut args_iter = env::args();
+    let binary = args_iter.next().unwrap();
 
-    let config = Config::build(&args[1..])
+    let config = Config::build(args_iter)
         .unwrap_or_else(|e| {
             eprintln!("{e}");
 
-            let binary = &args[0];
             eprintln!("Usage: {binary} <query> <file_path>");
 
             process::exit(1);
