@@ -17,8 +17,6 @@ fn main() {
             process::exit(1);
         });
 
-    println!("Searching for \"{}\" in file \"{}\"...", config.query, config.file_path);
-
     if let Err(e) = run(&config) {
         eprintln!("Error: {e}");
 
