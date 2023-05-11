@@ -1,18 +1,27 @@
-use std::{env, fs, process};
+use std::{env, process};
+use minigrep::{
+    app::run,
+    config::Config,
+};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    let query = &args[1];
-    let file_path = &args[2];
-
-    println!("Searching for \"{query}\" in file \"{file_path}\"...");
-
-    let text = fs::read_to_string(file_path)
+    let config = Config::build(&args[1..])
         .unwrap_or_else(|e| {
-            eprintln!("Unable to read file: {}", e);
+            eprintln!("{e}");
+
+            let binary = &args[0];
+            eprintln!("Usage: {binary} <query> <file_path>");
+
             process::exit(1);
         });
 
-    println!("With text:\n{text}");
+    println!("Searching for \"{}\" in file \"{}\"...", config.query, config.file_path);
+
+    if let Err(e) = run(&config) {
+        eprintln!("Error: {e}");
+
+        process::exit(1);
+    }
 }
